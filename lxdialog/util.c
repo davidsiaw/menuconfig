@@ -7,6 +7,7 @@
  */
 
 #include <stdarg.h>
+#include <locale.h>
 
 #include "dialog.h"
 
@@ -303,6 +304,7 @@ int init_dialog(const char *backtitle)
 {
 	int height, width;
 
+	setlocale(LC_ALL, "");
 	initscr();		/* Init curses */
 
 	/* Get current cursor position for signal handler in mconf.c */
