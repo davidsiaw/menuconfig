@@ -966,7 +966,7 @@ static int handle_exit(void)
 					  "\n\n");
 			return 1;
 		}
-		conf_write_autoconf(0);
+		conf_write_autoconf(CONF_WRITE_AUTOCONF_OVERWRITE_NO);
 		/* fall through */
 	case -1:
 		if (!silent)

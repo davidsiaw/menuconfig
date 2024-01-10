@@ -12,6 +12,9 @@
 
 #include "expr.h"
 
+#define CONF_WRITE_AUTOCONF_OVERWRITE_NO 0
+#define CONF_WRITE_AUTOCONF_OVERWRITE_YES 1
+
 #ifdef __cplusplus
 extern "C" {
 #endif

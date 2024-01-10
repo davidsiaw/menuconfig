@@ -113,8 +113,10 @@ static int make_parent_dir(const char *path)
 		*p = 0;
 
 		/* skip if the directory exists */
-		if (!is_dir(tmp) && mkdir(tmp, 0755))
-			return -1;
+		if (!is_dir(tmp) && mkdir(tmp, 0755)) {
+			/* do not return error since a dir just existing is not an error */
+			return 0;
+		}
 
 		*p = '/';
 		while (*p == '/')
@@ -1182,7 +1184,7 @@ int conf_write_autoconf(int overwrite)
 	const char *autoconf_name = conf_get_autoconfig_name();
 	int ret, i;
 
-	if (!overwrite && is_present(autoconf_name))
+	if (overwrite == CONF_WRITE_AUTOCONF_OVERWRITE_NO && is_present(autoconf_name))
 		return 0;
 
 	ret = conf_write_autoconf_cmd(autoconf_name);
